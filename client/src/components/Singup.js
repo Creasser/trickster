@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Signup(){
-    cosnt [userSignup, setUserSignup] = useState({
+    const [userSignup, setUserSignup] = useState({
         username: '',
         password: '',
         password_confirmation: '',
@@ -17,8 +17,20 @@ function Signup(){
         })
     }
 
-    function handleSubmit(){
+    function handleSubmit(e){
         e.preventDefault()
+
+        fetch('/usersignup', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userSignup)
+        }).then((r) => {
+            r.json().then((user) => {
+                console.log(user)
+            })
+        })
         
     }
 
@@ -51,8 +63,14 @@ function Signup(){
                     value={userSignup.email}
                     placeholder="Enter Email"
                     onChange={handleChange}></input>
+                    <input 
+                    type="submit"
+                    name="submit"
+                    ></input>
                 </form>
             </div>
         </div>
     )
 }
+
+export default Signup

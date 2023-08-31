@@ -7,6 +7,7 @@ function Home(){
         <div>
             <h1>Hello World</h1>
             <Link to='signup'>Signup Here</Link>
+            <Link to='login'>Login</Link>
         </div>
     )
 }

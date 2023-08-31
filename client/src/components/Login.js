@@ -26,7 +26,18 @@ function Login(){
                 placeholder="Enter Username"
                 onChange={handleChange}
                 ></input>
+                <input
+                type="text"
+                name="password"
+                value={loginInfo.password}
+                placeholder="Enter Password"
+                onChange={handleChange}></input>
+                <input
+                type="submit"
+                name="submit"></input>
             </form>
         </div>
     )
 }
+
+export default Login

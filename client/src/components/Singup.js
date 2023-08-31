@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Signup(){
     const [userSignup, setUserSignup] = useState({
@@ -77,6 +78,7 @@ function Signup(){
                     ></input>
                 </form>
             </div>
+            <Link to="/">Return</Link>
         </div>
     )
 }

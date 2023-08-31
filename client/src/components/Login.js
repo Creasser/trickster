@@ -15,10 +15,26 @@ function Login(){
             [name]: value
         })
     }
+
+    function handleSubmit(e){
+        e.preventDefault()
+
+        fetch('/userlogin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginInfo)
+        }).then((r) => {
+            r.json().then((user) => {
+                console.log(user)
+            })
+        })
+    }
     
     return(
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input
                 type="text"
                 name="username"

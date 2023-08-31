@@ -3,5 +3,5 @@ class User < ApplicationRecord
     has_many :tricks, through: :goals
     has_secure_password
     validates :username, uniqueness: true, presence: true, length: {in: 8..20}
-    validates :email, uniqueness: true, presence: true
+    validates :email, uniqueness: true, presence: true, email: true
 end

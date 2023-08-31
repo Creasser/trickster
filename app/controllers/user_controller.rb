@@ -10,6 +10,10 @@ class UserController < ApplicationController
         end
     end
 
+    def test
+        users = User.all
+        render json: users
+    end
 
     private
 

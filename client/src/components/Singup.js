@@ -7,6 +7,7 @@ function Signup(){
         password_confirmation: '',
         email: ''
     })
+    const [errors, setErrors] = useState([])
 
     function handleChange(e){
         const name = e.target.name
@@ -27,9 +28,16 @@ function Signup(){
             },
             body: JSON.stringify(userSignup)
         }).then((r) => {
-            r.json().then((user) => {
-                console.log(user)
-            })
+            if (r.ok){
+                r.json().then((user) => {
+                    console.log(user)
+                })
+            }
+            else{
+                r.json().then((err) => {
+                    console.log(err)
+                })
+            }
         })
         
     }

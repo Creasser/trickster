@@ -6,5 +6,7 @@ Rails.application.routes.draw do
       constraints: ->(req) { !req.xhr? && req.format.html? }
 
   post "/usersignup", to: "user#create"
-    
+  
+  post "/userlogin", to: "sessions#create"
+  
 end

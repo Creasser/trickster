@@ -10,6 +10,7 @@ class UserController < ApplicationController
         end
     end
 
+
     private
 
     def user_params

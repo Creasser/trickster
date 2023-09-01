@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Login(){
     const [loginInfo, setLoginInfo] = useState({
@@ -52,6 +53,9 @@ function Login(){
                 type="submit"
                 name="submit"></input>
             </form>
+            <div>
+                <Link to='/'>Return</Link>
+            </div>
         </div>
     )
 }

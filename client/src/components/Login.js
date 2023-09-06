@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { UserContext } from "./Context";
+import Error from "./Error";
+import { v4 as uuidv4} from 'uuid'
 
 function Login(){
     const {setUser} = useContext(UserContext)
@@ -67,7 +69,7 @@ function Login(){
             <div>
                 {errors ? 
                 errors.map((err) => {
-                    console.log(err)
+                    return <Error key={uuidv4()} err={err} />
                 })
                 :
                 null}

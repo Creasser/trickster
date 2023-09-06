@@ -35,6 +35,7 @@ function Login(){
             if (r.ok){
                 r.json().then((user) => {
                     setUser(user)
+                    console.log(user)
                 })
             }
             else{

@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { UserContext } from "./Context";
 
 function Login(){
+    const {setUser} = useContext(UserContext)
+    const [errors, setErrors] = useState([])
     const [loginInfo, setLoginInfo] = useState({
         username: '',
         password: ''
@@ -27,9 +30,17 @@ function Login(){
             },
             body: JSON.stringify(loginInfo)
         }).then((r) => {
-            r.json().then((user) => {
-                console.log(user)
-            })
+            if (r.ok){
+                r.json().then((user) => {
+                    setUser(user)
+                })
+            }
+            else{
+                r.json().then((err) => {
+                    setErrors(err.errors)
+                    console.log(err)
+                })
+            }
         })
     }
     
@@ -53,6 +64,14 @@ function Login(){
                 type="submit"
                 name="submit"></input>
             </form>
+            <div>
+                {errors ? 
+                errors.map((err) => {
+                    console.log(err)
+                })
+                :
+                null}
+            </div>
             <div>
                 <Link to='/'>Return</Link>
             </div>

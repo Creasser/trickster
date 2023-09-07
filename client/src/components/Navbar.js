@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Navbar(){
 
@@ -14,6 +14,7 @@ function Navbar(){
     return(
         <div>
             <button onClick={handleLogout}>Logout</button>
+            <Link to='/tricks'>Tricks</Link>
         </div>
     )
 }

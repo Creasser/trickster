@@ -10,6 +10,15 @@ class UserController < ApplicationController
         end
     end
 
+    def show
+        if session[:user_id]
+            user = User.find_by(id: session[:user_id])
+            render json: user, status: :created
+        else
+            render json: {errors: 'Not Logged In'}, status:  :unauthorized
+        end
+    end
+
     def test
         users = User.all
         render json: users

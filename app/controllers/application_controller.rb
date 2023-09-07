@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::API
     include ActionController::Cookies
-    #include ActionController::Serializer
+    before_action :authorize
 
-    def hello_world
-        session[:count] = (session[:count] || 0) + 1
-        render json: { count: session[:count] }
+    def authorize
+      render json: {errors: ['Not Authorized']}, status: :unauthorized unless session.include? :user_id
+    end
+
+    def current_user
+      if session[:user_id]
+        @current_user = User.find_by(id: session[:user_id])
       end
+    end
+
 end

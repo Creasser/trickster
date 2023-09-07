@@ -7,7 +7,7 @@ function Navbar(){
 
     function handleLogout(){
         fetch('/userlogout', {method: 'DELETE'}).then((r) => {
-            history.push('/')
+            history.push('/login')
         })
     } 
 

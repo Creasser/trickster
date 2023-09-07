@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { UserContext } from "./Context";
 import Error from "./Error";
 import { v4 as uuidv4} from 'uuid'
 
 function Login(){
+    const history = useHistory()
     const {setUser} = useContext(UserContext)
     const [errors, setErrors] = useState([])
     const [loginInfo, setLoginInfo] = useState({
@@ -36,6 +37,7 @@ function Login(){
                 r.json().then((user) => {
                     setUser(user)
                     console.log(user)
+                    history.push('/')
                 })
             }
             else{

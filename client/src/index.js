@@ -2,15 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { UserProvider } from './components/Context';
+import { UserProvider, TrickProvider } from './components/Context';
 //import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserProvider>
-        <App />
-    </UserProvider>
+    <TrickProvider>
+      <UserProvider>
+          <App />
+      </UserProvider>
+    </TrickProvider>
   </React.StrictMode>
 );
 

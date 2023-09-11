@@ -5,4 +5,20 @@ class TrickController < ApplicationController
         render json: {errors: 'This is working'}, status: :created
     end
 
+    def create
+        trick = @current_user.tricks.create(trick_params)
+        if trick.valid?
+            render json: trick, status: :created
+        else
+            render json: {errors: trick.errors.full_messages}, status: :unprocessable_entity
+        end
+    end
+
+
+    private
+
+    def trick_params 
+        params.permit(:category, :title, :difficulty)
+    end
+
 end

@@ -14,7 +14,7 @@ function Navbar(){
     return(
         <div>
             <button onClick={handleLogout}>Logout</button>
-            <Link to='/tricks'>Tricks</Link>
+            <Link to='/trick'>Trick</Link>
         </div>
     )
 }

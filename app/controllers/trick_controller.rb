@@ -2,7 +2,8 @@ class TrickController < ApplicationController
     skip_before_action :authorize, only: [:index]
 
     def index
-        render json: {errors: 'This is working'}, status: :created
+        tricks = Trick.all
+        render json: tricks, status: :created
     end
 
     def create
@@ -18,7 +19,7 @@ class TrickController < ApplicationController
     private
 
     def trick_params 
-        params.permit(:category, :title, :difficulty)
+        params.permit(:category_id, :title, :difficulty)
     end
 
 end

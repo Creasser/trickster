@@ -4,7 +4,7 @@ import { TrickContext } from "./Context";
 function TrickForm(){
     const [newTrick, setNewTrick] = useState({
         title: '',
-        category: '',
+        category_id: '',
         difficulty: ''
     })
 
@@ -43,6 +43,7 @@ function TrickForm(){
     function handleSubmit(e){
         e.preventDefault()
         console.log(newTrick)
+        let cat = findCatId(newTrick.category)
         fetch('/trick', {
             method: 'POST', 
             headers: {
@@ -50,7 +51,7 @@ function TrickForm(){
             },
             body: JSON.stringify({
                 title: newTrick.title,
-                category: newTrick.category,
+                category_id: newTrick.category,
                 difficulty: parseInt(newTrick.difficulty)
             })
         }).then((r) => {
@@ -59,7 +60,7 @@ function TrickForm(){
                     handleNewTrick(data)
                     setNewTrick({
                         title: '',
-                        category: '',
+                        category: cat,
                         difficulty: ''
                     })
                 })
@@ -80,7 +81,7 @@ function TrickForm(){
                 value={newTrick.title}
                 onChange={handleChange}>
                 </input>
-                <select name="category" onChange={handleChange}>
+                <select name="category_id" onChange={handleChange}>
                     <option value='Grab'>Grab</option>
                     <option value='Spin'>Spin</option>
                     <option value='Flip'>Flip</option>

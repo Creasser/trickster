@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { TrickContext } from "./Context";
 
 function TrickForm(){
     const [newTrick, setNewTrick] = useState({
@@ -6,6 +7,28 @@ function TrickForm(){
         category: '',
         difficulty: ''
     })
+
+    const { tricks, setTricks } = useContext(TrickContext)
+
+    function handleNewTrick(trick){
+        setTricks({
+            ...tricks,
+            trick
+        })
+    }
+
+    function findCatId(cat){
+        switch (cat){
+            case 'Spin':
+                return 1
+            case 'Grab':
+                return 2
+            case 'Flip':
+                return 3
+            case 'Rails':
+                return 4
+        }
+    }
 
     function handleChange(e){
         const name = e.target.name
@@ -20,6 +43,32 @@ function TrickForm(){
     function handleSubmit(e){
         e.preventDefault()
         console.log(newTrick)
+        fetch('/trick', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: newTrick.title,
+                category: newTrick.category,
+                difficulty: parseInt(newTrick.difficulty)
+            })
+        }).then((r) => {
+            if(r.ok){
+                r.json().then((data) => {
+                    handleNewTrick(data)
+                    setNewTrick({
+                        title: '',
+                        category: '',
+                        difficulty: ''
+                    })
+                })
+            }else{
+                r.json().then((err) => {
+                    console.log(err)
+                })
+            }
+        })
     }
 
     return(

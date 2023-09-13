@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :trick, only: [:index]
+  resources :trick, only: [:index, :create]
   
   #User signup, login, and logout routes
   get '/me', to: 'user#show'

@@ -6,7 +6,7 @@ class TrickController < ApplicationController
     end
 
     def create
-        trick = @current_user.tricks.create(trick_params)
+        trick = Trick.create(trick_params)
         if trick.valid?
             render json: trick, status: :created
         else

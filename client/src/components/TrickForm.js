@@ -43,7 +43,7 @@ function TrickForm(){
     function handleSubmit(e){
         e.preventDefault()
         console.log(newTrick)
-        let cat = findCatId(newTrick.category)
+        let cat = findCatId(newTrick['category_id'])
         fetch('/trick', {
             method: 'POST', 
             headers: {
@@ -51,7 +51,7 @@ function TrickForm(){
             },
             body: JSON.stringify({
                 title: newTrick.title,
-                category_id: newTrick.category,
+                category_id: cat,
                 difficulty: parseInt(newTrick.difficulty)
             })
         }).then((r) => {
@@ -60,7 +60,7 @@ function TrickForm(){
                     handleNewTrick(data)
                     setNewTrick({
                         title: '',
-                        category: cat,
+                        category_id: cat,
                         difficulty: ''
                     })
                 })

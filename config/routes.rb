@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :trick, only: [:index, :create]
-  
+  resources :category, only: [:index]
   #User signup, login, and logout routes
   get '/me', to: 'user#show'
   post "/usersignup", to: "user#create"

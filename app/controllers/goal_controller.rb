@@ -7,7 +7,7 @@ class GoalController < ApplicationController
 
 
     #need to pass the trick_id to the server, and just use goal_params
-
+    #need to set up serializer for relationships
     private
 
     def goal_params

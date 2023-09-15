@@ -13,6 +13,8 @@ function TrickList(){
         return <h1>Loading...</h1>
     }
 
+    //will need to condionally render only the tricks that the user does not already have in their goals
+    //can do this by compairing ids 
 
     let tricksToDisplay = tricks.map((trick) => {
         return <Trick trick={trick} key={uuidv4()} />

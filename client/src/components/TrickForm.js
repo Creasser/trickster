@@ -11,10 +11,10 @@ function TrickForm(){
     const { tricks, setTricks } = useContext(TrickContext)
 
     function handleNewTrick(trick){
-        setTricks({
+        setTricks([
             ...tricks,
             trick
-        })
+        ])
     }
 
     function findCatId(cat){
@@ -60,7 +60,7 @@ function TrickForm(){
                     handleNewTrick(data)
                     setNewTrick({
                         title: '',
-                        category_id: cat,
+                        category_id: 'Spin',
                         difficulty: ''
                     })
                 })

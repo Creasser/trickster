@@ -26,6 +26,10 @@ function Trick({ trick }){
         })
     }
 
+    // function addNewGoalToUser(goal){
+
+    // }
+
     //need to make a route in goals controller
 
     return(

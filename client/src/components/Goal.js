@@ -2,6 +2,9 @@ import React from "react";
 
 function Goal({ trick, attempts, is_completed }){
 
+    // if (!trick){
+    //     return <h1>Add Some Goals!</h1>
+    // }
     
 
     return (

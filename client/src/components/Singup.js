@@ -1,7 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import React, { useContext, useState } from "react";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Error from "./Error";
+import { UserContext } from "./Context";
+import { v4 as uuidv4 } from "uuid";
 
 function Signup(){
+    const history = useHistory()
+    const {setUser} = useContext(UserContext)
     const [userSignup, setUserSignup] = useState({
         username: '',
         password: '',
@@ -31,11 +36,14 @@ function Signup(){
         }).then((r) => {
             if (r.ok){
                 r.json().then((user) => {
+                    setUser(user)
                     console.log(user)
+                    history.push('/')                   
                 })
             }
             else{
                 r.json().then((err) => {
+                    setErrors(err.errors)
                     console.log(err)
                 })
             }
@@ -77,6 +85,14 @@ function Signup(){
                     name="submit"
                     ></input>
                 </form>
+                <div>
+                {errors ? 
+                    errors.map((err) => {
+                        return <Error key={uuidv4()} err={err} />
+                    })
+                    :
+                    null}
+            </div>
             </div>
             <Link to="/">Return</Link>
         </div>

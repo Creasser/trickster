@@ -17,7 +17,7 @@ function TrickList(){
     //can do this by compairing ids 
 
     let tricksToDisplay = tricks.map((trick) => {
-        return <Trick trick={trick} key={uuidv4()} />
+        return <Trick trick={trick} category={trick.category} key={uuidv4()} />
     })
 
 

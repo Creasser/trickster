@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TrickContext } from "./Context";
 
-function Trick({ trick }){
+function Trick({ trick, category }){
+
+    const {tricks, setTricks} = useContext(TrickContext)
 
     function handleNewGoal(){
         fetch('/goal', {
@@ -26,6 +29,21 @@ function Trick({ trick }){
         })
     }
 
+    function handleDelete(id){
+        fetch(`/trick/${id}`, {
+            method: 'DELETE'
+        }).then((r) => {
+            if (r.ok){
+                onDelete(id)
+            }
+        })
+    }
+
+    function onDelete(id){
+       const updatedTricks = tricks.filter((trick) => trick.id !== id)
+       setTricks(updatedTricks)
+    }
+
     // function addNewGoalToUser(goal){
 
     // }
@@ -36,8 +54,9 @@ function Trick({ trick }){
         <div>
             <h1>{trick.title}</h1>
             <h3>{trick.difficulty}</h3>
-            <h3>{trick['category_id']}</h3>
+            <h3>{}</h3>
             <button onClick={handleNewGoal}>Add to goals</button>
+            <button onClick={() => {handleDelete(trick.id)}}>Remove Trick</button>
         </div>
     )
 }

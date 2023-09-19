@@ -15,6 +15,12 @@ class TrickController < ApplicationController
         end
     end
 
+    def destroy
+        trick = @current_user.tricks.find_by(id: params[:id])
+        trick.destroy
+        head :no_content
+    end
+
 
     private
 

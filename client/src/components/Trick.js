@@ -39,6 +39,7 @@ function Trick({ trick, category }){
         })
     }
 
+    //will need to remove the trick from the user as well to prevent errors
     function onDelete(id){
        const updatedTricks = tricks.filter((trick) => trick.id !== id)
        setTricks(updatedTricks)
@@ -54,7 +55,7 @@ function Trick({ trick, category }){
         <div>
             <h1>{trick.title}</h1>
             <h3>{trick.difficulty}</h3>
-            <h3>{}</h3>
+            <h3>{`Type: ${category.category}`}</h3>
             <button onClick={handleNewGoal}>Add to goals</button>
             <button onClick={() => {handleDelete(trick.id)}}>Remove Trick</button>
         </div>

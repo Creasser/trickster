@@ -11,7 +11,7 @@ function GoalList(){
     }
 
     function handleAttempt(updatedGoal){
-        const currentUser = user
+        const currentUser = {...user}
         const currentGoal = user.goals.find((goal) => goal.id === updatedGoal.id)
         currentGoal.attempts = updatedGoal.attempts
         const updatedGoals = user.goals.filter((goal) => goal.id === updatedGoal.id ? currentGoal : goal)

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :trick, only: [:index, :create, :destroy]
   resources :category, only: [:index]
-  resources :goal, only: [:create]
+  resources :goal, only: [:create, :update]
   #User signup, login, and logout routes
   get '/me', to: 'user#show'
   post "/usersignup", to: "user#create"

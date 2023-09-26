@@ -6,7 +6,7 @@ class GoalController < ApplicationController
     end
 
     def update
-        goal = @current_user.goals.find_by(params[:id])
+        goal = @current_user.goals.find(params[:id])
         goal.update(goal_params)
         if goal.valid?
             render json: goal, status: :created
@@ -20,7 +20,7 @@ class GoalController < ApplicationController
     private
 
     def goal_params
-        params.permit(:trick_id, :is_completed, :attempts)
+        params.permit(:trick_id, :is_completed, :attempts, :id)
     end
 
 end

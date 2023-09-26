@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "./Context";
 
-function Goal({ goal, attempts, is_completed, id }){
+function Goal({ goal, attempts, is_completed, id, handleAttempt }){
 
     // if (!goal){
     //     return <h1>Add Some Goals!</h1>
     // }
     
-
+   // const { user } = useContext(UserContext)
 
     //can use some conditional rendering for the background of the card. Red = not completed Green = completed
 
@@ -28,6 +29,7 @@ function Goal({ goal, attempts, is_completed, id }){
             if (r.ok){
                 r.json().then((updatedGoal) => {
                     console.log(updatedGoal)
+                    handleAttempt(updatedGoal)
                 })
             }else{
                 r.json().then((err) => {
@@ -37,6 +39,17 @@ function Goal({ goal, attempts, is_completed, id }){
         })
     }
 
+    // function handleAttempt(updatedGoal){
+    //     const currentUser = user
+    //     const currentGoal = user.goals.find((goal) => goal.id === updatedGoal.id)
+    //     currentGoal.attempts = updatedGoal.attempts
+    //     const updatedGoals = user.goals.filter((goal) => goal.id === updatedGoal.id ? currentGoal : goal)
+    //     currentUser.goals = updatedGoals
+    //     setUser(currentUser)
+    //     //console.log(updatedGoals)
+    // }
+
+    //can make add attempt button disabled when goal is completed, but when marked not completed, make it avaiable
 
     return (
         <div>

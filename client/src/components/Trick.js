@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
-import { TrickContext } from "./Context";
+import { TrickContext, UserContext } from "./Context";
 
 function Trick({ trick, category }){
 
     const {tricks, setTricks} = useContext(TrickContext)
+
+    const { user, setUser } = useContext(UserContext)
 
     function handleNewGoal(){
         fetch('/goal', {

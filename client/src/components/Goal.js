@@ -3,9 +3,9 @@ import { UserContext } from "./Context";
 
 function Goal({ goal, attempts, is_completed, id, handleAttempt }){
 
-    // if (!goal){
-    //     return <h1>Add Some Goals!</h1>
-    // }
+    if (!goal){
+        return <h1></h1>
+    }
     
    // const { user } = useContext(UserContext)
 

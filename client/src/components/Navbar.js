@@ -7,15 +7,17 @@ function Navbar(){
 
     function handleLogout(){
         fetch('/userlogout', {method: 'DELETE'}).then((r) => {
-            history.push('/login')
+            history.push('/signup')
         })
     } 
 
+    
     return(
         <div>
             <button onClick={handleLogout}>Logout</button>
             <Link to='/'>Home</Link>
             <Link to='/trick'>Trick</Link>
+            <Link to='/login'>Login</Link>
         </div>
     )
 }

@@ -74,6 +74,7 @@ function TrickForm(){
 
     return(
         <div>
+            <h1>Add New Trick</h1>
             <form onSubmit={handleSubmit}>
                 <input
                 type="text"

@@ -23,7 +23,7 @@ function TrickList(){
 
     return(
         <div>
-            <h1>HELLO</h1>
+            <h1>Tricks</h1>
             { tricksToDisplay }
             <TrickForm />
         </div>

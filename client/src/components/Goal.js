@@ -39,6 +39,33 @@ function Goal({ goal, attempts, is_completed, id, handleAttempt }){
         })
     }
 
+    function handleCompleted(e){
+        e.preventDefault()
+        let updatedStatus = !is_completed
+        fetch(`/goal/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                trick_id: goal.id,
+                is_completed: updatedStatus,
+                attempts: attempts
+            })
+        }).then((r) => {
+            if (r.ok){
+                r.json().then((updatedGoal) => {
+                    console.log(updatedGoal)
+                    handleAttempt(updatedGoal)
+                })
+            }else{
+                r.json().then((err) => {
+                    console.log(err)
+                })
+            }
+        })
+    }
+
     // function handleAttempt(updatedGoal){
     //     const currentUser = user
     //     const currentGoal = user.goals.find((goal) => goal.id === updatedGoal.id)
@@ -58,7 +85,7 @@ function Goal({ goal, attempts, is_completed, id, handleAttempt }){
             <h3>{`Attempts: ${attempts}`}</h3>
             <h3>{is_completed ? 'Completed' : 'In Progress'}</h3>
             <button onClick={handleAddAttempt}>Add Attempt</button>
-            <button>Mark Completed</button>
+            <button onClick={handleCompleted}>Mark Completed</button>
         </div>
     )
 }

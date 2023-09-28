@@ -14,10 +14,10 @@ function GoalList(){
         const currentUser = {...user}
         const currentGoal = user.goals.find((goal) => goal.id === updatedGoal.id)
         currentGoal.attempts = updatedGoal.attempts
+        currentGoal.is_completed = updatedGoal.is_completed
         const updatedGoals = user.goals.filter((goal) => goal.id === updatedGoal.id ? currentGoal : goal)
         currentUser.goals = updatedGoals
         setUser(currentUser)
-        //console.log(updatedGoals)
     }
 
     const goalsToDisplay = user.goals.map((goal) => {

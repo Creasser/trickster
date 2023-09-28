@@ -14,6 +14,7 @@ function Navbar(){
     return(
         <div>
             <button onClick={handleLogout}>Logout</button>
+            <Link to='/'>Home</Link>
             <Link to='/trick'>Trick</Link>
         </div>
     )

@@ -28,7 +28,6 @@ function Goal({ goal, attempts, is_completed, id, handleAttempt }){
         }).then((r) => {
             if (r.ok){
                 r.json().then((updatedGoal) => {
-                    console.log(updatedGoal)
                     handleAttempt(updatedGoal)
                 })
             }else{
@@ -55,7 +54,6 @@ function Goal({ goal, attempts, is_completed, id, handleAttempt }){
         }).then((r) => {
             if (r.ok){
                 r.json().then((updatedGoal) => {
-                    console.log(updatedGoal)
                     handleAttempt(updatedGoal)
                 })
             }else{
@@ -84,7 +82,7 @@ function Goal({ goal, attempts, is_completed, id, handleAttempt }){
             <h3>{`Difficulty: ${goal.difficulty}/5`}</h3>
             <h3>{`Attempts: ${attempts}`}</h3>
             <h3>{is_completed ? 'Completed' : 'In Progress'}</h3>
-            <button onClick={handleAddAttempt}>Add Attempt</button>
+            <button disabled={is_completed ? true : false} onClick={handleAddAttempt}>Add Attempt</button>
             <button onClick={handleCompleted}>Mark Completed</button>
         </div>
     )

@@ -7,9 +7,14 @@ function Home(){
 
     const { user } = useContext(UserContext)
 
+    function handleClick(){
+        console.log(user)
+    }
+
     return(
         <div>
             <h1>{`Hello, ${user.username}`}</h1>
+            <button onClick={handleClick}>Log User</button>
             <h1>Current Goals</h1>
             <div>
                 <GoalList />

@@ -1,5 +1,5 @@
 class UserGoalsSerializer < ActiveModel::Serializer
-  attributes :trick, :is_completed, :attempts, :id
+  attributes :is_completed, :attempts, :id, :trick
 
   belongs_to :trick
 end

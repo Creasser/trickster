@@ -22,6 +22,7 @@ function Trick({ trick, category }){
             if (r.ok){
                 r.json().then((goal) => {
                     console.log(goal)
+                    addGoalToUser(goal)
                 })
             }else{
                 r.json().then((err) => {
@@ -29,6 +30,24 @@ function Trick({ trick, category }){
                 })
             }
         })
+    }
+
+    function addGoalToUser(goal){
+        const newGoal = {
+            is_completed: false,
+            attempts: 0,
+            id: goal.id,
+            trick: {
+                id: goal.trick.id,
+                title: goal.trick.title,
+                difficulty: goal.trick.difficulty,
+                category_id: goal.category.id
+            }
+        }
+        console.log(newGoal)
+        const currentUser = {...user}
+        currentUser.goals.push(newGoal)
+        setUser(currentUser)
     }
 
     function handleDelete(id){

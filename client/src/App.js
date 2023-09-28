@@ -33,7 +33,7 @@ function App() {
       if (r.ok){
         r.json().then((tricks) => {
           setTricks(tricks)
-          //console.log(tricks)
+          console.log(tricks)
         })
       }
       else{

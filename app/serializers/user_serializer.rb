@@ -4,7 +4,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :goals , serializer: UserGoalsSerializer
 
   def created_tricks
-    object.tricks
+    object.tricks.uniq
   end
 
 end

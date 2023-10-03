@@ -18,6 +18,7 @@ function Navbar(){
             <Link to='/'>Home</Link>
             <Link to='/trick'>Trick</Link>
             <Link to='/login'>Login</Link>
+            <Link to='/stats'>My Stats</Link>
         </div>
     )
 }

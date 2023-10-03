@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import { UserContext, TrickContext } from "./components/Context";
 import TrickList from "./components/TrickList";
+import Stats from "./components/Stats";
 
 function App() {
   const { user, setUser} = useContext(UserContext)
@@ -58,6 +59,9 @@ function App() {
           </Route>
           <Route path='/trick'>
             <TrickList />
+          </Route>
+          <Route path='/stats'>
+            <Stats />
           </Route>
         </Switch>
       </div>

@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { UserContext } from "./Context";
 
 function Navbar(){
+
+    const { setUser } = useContext(UserContext)
 
     const history = useHistory()
 
     function handleLogout(){
         fetch('/userlogout', {method: 'DELETE'}).then((r) => {
-            history.push('/signup')
+            if(r.ok){
+                history.push('/signup')
+                setUser(null)
+            }
         })
     } 
 

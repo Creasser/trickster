@@ -2,12 +2,13 @@ class UserController < ApplicationController
     skip_before_action :authorize, only: [:create]
 
     def create
-        user = User.create(user_params)
-        if user.valid?
-            session[:user_id] = user.id
-            render json: user, status: :created
+        @user = User.create(user_params)
+        if @user.valid?
+            UserMailer.with(user: @user).welcome_message.deliver_later
+            session[:user_id] = @user.id
+            render json: @user, status: :created
         else
-            render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+            render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
         end
     end
 

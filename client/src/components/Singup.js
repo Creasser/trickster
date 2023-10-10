@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Error from "./Error";
 import { UserContext } from "./Context";
 import { v4 as uuidv4 } from "uuid";
+import { TextField, Button, Stack, Grid } from '@mui/material'
 
 function Signup(){
     const history = useHistory()
@@ -55,35 +56,39 @@ function Signup(){
         <div>
             <h1>Sign Up Here</h1>
             <div>
-                <form onSubmit={handleSubmit}>
-                    <input
-                    type="text"
-                    name="username"
-                    value={userSignup.username}
-                    placeholder="Enter Username"
-                    onChange={handleChange}></input>
-                    <input
-                    type="text"
-                    name="password"
-                    value={userSignup.password}
-                    placeholder="Enter Password"
-                    onChange={handleChange}></input>
-                    <input
-                    type="text"
-                    name="password_confirmation"
-                    value={userSignup.password_confirmation}
-                    placeholder="Confirm Password"
-                    onChange={handleChange}></input>
-                    <input
-                    type="text"
-                    name="email"
-                    value={userSignup.email}
-                    placeholder="Enter Email"
-                    onChange={handleChange}></input>
-                    <input 
-                    type="submit"
-                    name="submit"
-                    ></input>
+                <form autoComplete="off" onSubmit={handleSubmit}>
+                    <Stack spacing={2} sx={{width: .5}}>
+                        <TextField
+                            type="text"
+                            name="username"
+                            value={userSignup.username}
+                            placeholder="Enter Username"
+                            onChange={handleChange}/>
+                        <TextField
+                            type="text"
+                            name="password"
+                            value={userSignup.password}
+                            placeholder="Enter Password"
+                            onChange={handleChange}/>
+                        <TextField
+                            type="text"
+                            name="password_confirmation"
+                            value={userSignup.password_confirmation}
+                            placeholder="Confirm Password"
+                            onChange={handleChange}/>
+                        <TextField
+                            type="text"
+                            name="email"
+                            value={userSignup.email}
+                            placeholder="Enter Email"
+                            onChange={handleChange}/>
+                        <Button 
+                            type="submit"
+                            name="submit"
+                            variant="outlined"
+                            >Sign Up
+                        </Button>
+                    </Stack>
                 </form>
                 <div>
                 {errors ? 

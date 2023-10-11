@@ -61,31 +61,39 @@ function Signup(){
                     </div>
                 </Grid>
                 <Grid item xs={6} >
-                    <div style={{height: '100vh', display:'flex', flexDirection: 'column', alignItems:'center', justifyContent:'center'}}>
-                        <h1>Sign Up Here</h1>
+                    <div style={{height: '100vh', display:'flex', flexDirection: 'column', alignItems:'center', justifyContent:'center', backgroundColor:'#8BAAAD'}}>
+                        <h1>Register Now!</h1>
                             <form onSubmit={handleSubmit} style={{width: '70%', display:'flex', justifyContent:'center'}}>
                                 <Stack spacing={2} sx={{width: .75}} divider={<Divider orientation="horizontal" flexItem />}>
                                     <TextField
                                         type="text"
                                         name="username"
+                                        variant="filled"
+                                        label="Username"
                                         value={userSignup.username}
                                         placeholder="Enter Username"
                                         onChange={handleChange}/>
                                     <TextField
                                         type="text"
                                         name="password"
+                                        variant="filled"
+                                        label="Password"
                                         value={userSignup.password}
                                         placeholder="Enter Password"
                                         onChange={handleChange}/>
                                     <TextField
                                         type="text"
                                         name="password_confirmation"
+                                        label="Password Confirmation"
+                                        variant="filled"
                                         value={userSignup.password_confirmation}
                                         placeholder="Confirm Password"
                                         onChange={handleChange}/>
                                     <TextField
                                         type="text"
                                         name="email"
+                                        variant="filled"
+                                        label="Enter Email"
                                         value={userSignup.email}
                                         placeholder="Enter Email"
                                         onChange={handleChange}/>
@@ -97,8 +105,8 @@ function Signup(){
                                     </Button>
                                 </Stack>
                             </form>
-                            <small>Already have an account? <Link to='/login'>Login Here</Link></small>
-                        <div>
+                            <small style={{paddingTop:'5px'}}>Already have an account? <Link to='/login'>Login Here</Link></small>
+                        <div style={{paddingTop: '5px'}}>
                         {errors ? 
                             errors.map((err) => {
                                 return <Error key={uuidv4()} err={err} />

@@ -38,8 +38,8 @@ function Stats(){
             return goal.trick['difficulty']
         })
         const difficultyTotal = goalDifficulty.reduce((a, b) => a + b, 0)
-        console.log(difficultyTotal / completedTricks.length)
-        console.log(difficultyTotal)
+       // console.log(difficultyTotal / completedTricks.length)
+        //console.log(difficultyTotal)
         return difficultyTotal / completedTricks.length
     }
 

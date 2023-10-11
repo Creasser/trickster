@@ -62,7 +62,7 @@ function Signup(){
                 </Grid>
                 <Grid item xs={6} >
                     <div style={{height: '100vh', display:'flex', flexDirection: 'column', alignItems:'center', justifyContent:'center', backgroundColor:'#8BAAAD'}}>
-                        <h1>Register Now!</h1>
+                        <h1>Register for Trixster Now!</h1>
                             <form onSubmit={handleSubmit} style={{width: '70%', display:'flex', justifyContent:'center'}}>
                                 <Stack spacing={2} sx={{width: .75}} divider={<Divider orientation="horizontal" flexItem />}>
                                     <TextField

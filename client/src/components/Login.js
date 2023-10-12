@@ -83,7 +83,8 @@ function Login(){
                                     variant="outlined">Login</Button>
                             </Stack>
                         </form>
-                        <div>
+                        <small style={{paddingTop:'5px'}}>Don't have an account? <Link to='/signup'>Sign Up Here</Link></small>
+                        <div style={{paddingTop: '5px'}}>
                             {errors ? 
                             errors.map((err) => {
                                 return <Error key={uuidv4()} err={err} />

@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { UserContext } from "./Context";
 import Error from "./Error";
 import { v4 as uuidv4} from 'uuid'
+import { Button, Grid, TextField, Stack, Divider } from "@mui/material";
 
 function Login(){
     const history = useHistory()
@@ -50,36 +51,54 @@ function Login(){
     }
     
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                type="text"
-                name="username"
-                value={loginInfo.username}
-                placeholder="Enter Username"
-                onChange={handleChange}
-                ></input>
-                <input
-                type="text"
-                name="password"
-                value={loginInfo.password}
-                placeholder="Enter Password"
-                onChange={handleChange}></input>
-                <input
-                type="submit"
-                name="submit"></input>
-            </form>
-            <div>
-                {errors ? 
-                errors.map((err) => {
-                    return <Error key={uuidv4()} err={err} />
-                })
-                :
-                null}
-            </div>
-            <div>
-                <Link to='/'>Return</Link>
-            </div>
+        <div style={{height: "100vh"}}>
+            <Grid container alignItems="stretch" justifyContent='center'>
+                <Grid item xs={6}>
+                    <div style={{height: '100vh', display:'flex', flexDirection: 'column', alignItems:'center', justifyContent:'center', backgroundColor:'#8BAAAD'}}>
+                            <h1>TriXster</h1>
+                        <form onSubmit={handleSubmit} style={{width: '70%', display: 'flex', justifyContent: 'center'}}>
+                            <Stack spacing={2} sx={{width: .75}} 
+                            divider={
+                                <Divider orientation="horizontal" flexItem />
+                            }>
+                                <TextField
+                                    type="text"
+                                    name="username"
+                                    variant="filled"
+                                    label='Username'
+                                    value={loginInfo.username}
+                                    placeholder="Enter Username"
+                                    onChange={handleChange}/>
+                                <TextField
+                                    type="text"
+                                    name="password"
+                                    variant="filled"
+                                    label='Password'
+                                    value={loginInfo.password}
+                                    placeholder="Enter Password"
+                                    onChange={handleChange}/>
+                                <Button
+                                    type="submit"
+                                    name="submit"
+                                    variant="outlined">Login</Button>
+                            </Stack>
+                        </form>
+                        <div>
+                            {errors ? 
+                            errors.map((err) => {
+                                return <Error key={uuidv4()} err={err} />
+                            })
+                            :
+                            null}
+                        </div>
+                    </div>
+                </Grid>
+                <Grid item xs={6}>
+                    <div style={{height: '100vh'}}>
+                        <img src="https://img.cdn-pictorem.com/uploads/collection/O/OA8RCH8DHG/900_1891766HighRes.jpg" style={{height:'100%', width:'100%', objectFit:'cover'}}></img>
+                    </div>
+                   </Grid>
+            </Grid>
         </div>
     )
 }

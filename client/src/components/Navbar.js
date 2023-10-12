@@ -28,7 +28,7 @@ function Navbar(){
     
     return( 
      
-        <AppBar>
+        <AppBar position="sticky" sx={{backgroundColor: '#176087'}}>
             <Toolbar variant="dense">
                 <Typography variant="h6" color="inherit" >
                     <Link to='/' style={{textDecoration: 'none', color: 'white'}}>Home</Link>

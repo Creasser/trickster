@@ -47,7 +47,6 @@ function Navbar(){
     </Box>
 
     :  
-
         <Box sx={{flexGrow: 1}}>
            <AppBar position="sticky" sx={{backgroundColor: '#176087'}}>
                <Toolbar variant="dense">

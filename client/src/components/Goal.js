@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "./Context";
+import { Paper, Button } from "@mui/material";
 
 function Goal({ goal, attempts, is_completed, id, handleAttempt }){
 
@@ -76,15 +77,17 @@ function Goal({ goal, attempts, is_completed, id, handleAttempt }){
 
     //can make add attempt button disabled when goal is completed, but when marked not completed, make it avaiable
 
+    let color = is_completed ? '#69DC9E' : '#90323D'
+
     return (
-        <div>
+        <Paper variant="outlined" elevation={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height:'400px', width: '300px', backgroundColor: color, margin: '0px 10px 20px 10px'}}>
             <h1>{goal.title}</h1>
             <h3>{`Difficulty: ${goal.difficulty}/5`}</h3>
             <h3>{`Attempts: ${attempts}`}</h3>
             <h3>{is_completed ? 'Completed' : 'In Progress'}</h3>
-            <button disabled={is_completed ? true : false} onClick={handleAddAttempt}>Add Attempt</button>
-            <button onClick={handleCompleted}>Mark Completed</button>
-        </div>
+            <Button variant="contained" disabled={is_completed ? true : false} onClick={handleAddAttempt} style={{marginBottom: '10px', color: 'black', backgroundColor: '#8BAAAD'}}>Add Attempt</Button>
+            <Button variant="contained" onClick={handleCompleted} style={{color: 'black', backgroundColor: '#8BAAAD'}}>Mark Completed</Button>
+        </Paper>
     )
 }
 

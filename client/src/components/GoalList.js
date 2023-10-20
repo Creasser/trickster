@@ -19,7 +19,7 @@ function GoalList(){
         currentUser.goals = updatedGoals
         setUser(currentUser)
     }
-
+ 
     const goalsToDisplay = user.goals.map((goal) => {
         return <Goal goal={goal.trick} attempts={goal.attempts} is_completed={goal['is_completed']} id={goal.id} handleAttempt={handleAttempt} key={uuidv4()}/>
     })
@@ -29,9 +29,8 @@ function GoalList(){
     }
 
     return(
-        <div>
-            {goalsToDisplay}
-            <button onClick={handleClick}>console</button>
+        <div style={{display: 'flex', flexWrap:'wrap', justifyContent: 'center'}}>
+            {goalsToDisplay}    
         </div>
     )
 }

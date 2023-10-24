@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { TrickContext, UserContext } from "./Context";
+import { Button, Paper } from "@mui/material";
 
 function Trick({ trick, category }){
 
@@ -72,14 +73,15 @@ function Trick({ trick, category }){
 
     //need to make a route in goals controller
 
+
     return(
-        <div>
+        <Paper variant="outlined" elevation={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height:'350px', width: '300px', backgroundColor: '#69DC9E', margin: '0px 10px 20px 10px'}}>
             <h1>{trick.title}</h1>
             <h3>{`Difficulty: ${trick.difficulty}`}</h3>
             <h3>{`Type: ${category.category}`}</h3>
-            <button onClick={handleNewGoal}>Add to goals</button>
-            <button onClick={() => {handleDelete(trick.id)}}>Remove Trick</button>
-        </div>
+            <Button variant="contained" style={{marginBottom: '10px', color: 'black', backgroundColor: '#8BAAAD', marginTop: '10px'}} onClick={handleNewGoal}>Add to goals</Button>
+            <Button variant="contained" style={{marginBottom: '10px', color: 'black', backgroundColor: '#8BAAAD'}} onClick={() => {handleDelete(trick.id)}}>Remove Trick</Button>
+        </Paper>
     )
 }
 

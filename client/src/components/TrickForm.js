@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { TrickContext } from "./Context";
+import { Button, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 
 function TrickForm(){
     const [newTrick, setNewTrick] = useState({
@@ -73,29 +74,35 @@ function TrickForm(){
     }
 
     return(
-        <div>
+        <div style={{display:'flex', flexDirection: 'column', alignItems:'center'}}>
             <h1>Add New Trick</h1>
             <form onSubmit={handleSubmit}>
-                <input
+                <TextField
+                style={{width:'500px'}}
                 type="text"
                 name="title"
                 value={newTrick.title}
-                onChange={handleChange}>
-                </input>
-                <select name="category_id" onChange={handleChange}>
-                    <option value='Grab'>Grab</option>
-                    <option value='Spin'>Spin</option>
-                    <option value='Flip'>Flip</option>
-                    <option value='Rails'>Rails</option>
-                </select>
-                <select name="difficulty" onChange={handleChange}>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                    <option value='5'>5</option>
-                </select>
-                <input type="submit" name="submit" value='Submit'></input>
+                onChange={handleChange}
+                label="Trick Name"
+                placeholder="Trick Name"
+                variant="filled">
+                </TextField>
+                <InputLabel id="catForm">Category</InputLabel>
+                <Select style={{width:'500px'}} labelId="catForm" name="category_id" onChange={handleChange}>
+                    <MenuItem value='Grab'>Grab</MenuItem>
+                    <MenuItem value='Spin'>Spin</MenuItem>
+                    <MenuItem value='Flip'>Flip</MenuItem>
+                    <MenuItem value='Rails'>Rails</MenuItem>
+                </Select>
+                <InputLabel id="diffForm">Difficulty</InputLabel>
+                <Select style={{width:'500px'}} labelId="diffForm" name="difficulty" onChange={handleChange}>
+                    <MenuItem value='1'>1</MenuItem>
+                    <MenuItem value='2'>2</MenuItem>
+                    <MenuItem value='3'>3</MenuItem>
+                    <MenuItem value='4'>4</MenuItem>
+                    <MenuItem value='5'>5</MenuItem>
+                </Select>
+                <Button style={{marginTop: '20px', marginBottom:'40px', color:'black'}} color="success" variant="contained" type="submit" name="submit" value='Submit'>Submit</Button>
             </form>
         </div>
     )

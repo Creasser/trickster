@@ -24,7 +24,9 @@ function TrickList(){
     return(
         <div style={{display:'flex', flexDirection:'column', backgroundColor:'#8BAAAD'}}>
             <h1 style={{paddingLeft: '50px', marginTop:'0px', paddingTop: '20px'}}>Tricks</h1>
-            { tricksToDisplay }
+            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+                { tricksToDisplay }
+            </div>
             <TrickForm />
         </div>
     )

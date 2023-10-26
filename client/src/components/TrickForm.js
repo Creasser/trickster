@@ -76,7 +76,7 @@ function TrickForm(){
     return(
         <div style={{display:'flex', flexDirection: 'column', alignItems:'center'}}>
             <h1>Add New Trick</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'column'}}>
                 <TextField
                 style={{width:'500px'}}
                 type="text"

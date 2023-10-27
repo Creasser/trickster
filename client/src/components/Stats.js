@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "./Context";
+import { Paper } from "@mui/material";
 
 function Stats(){
     const { user } = useContext(UserContext)
@@ -38,31 +39,30 @@ function Stats(){
             return goal.trick['difficulty']
         })
         const difficultyTotal = goalDifficulty.reduce((a, b) => a + b, 0)
-       // console.log(difficultyTotal / completedTricks.length)
-        //console.log(difficultyTotal)
         return difficultyTotal / completedTricks.length
     }
 
     return(
-        <div>
+        <div style={{display:'flex', flexDirection:'column', alignItems:'center', height:'95.2vh', backgroundImage: 'url(https://wallpapercave.com/wp/oKv3Xlf.jpg)'}}>
             <h1>Stats Page</h1>
-            <div>
-                <h3>Tricks Completed</h3>
-                <h4>{completedTricks()}</h4>
+            <div style={{display:'flex'}}>
+                <Paper variant="outlined" elevation={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height:'350px', width: '300px', backgroundColor: '#69DC9E', margin: '0px 10px 20px 10px'}}>
+                    <h2>Tricks Completed</h2>
+                    <h2>{completedTricks()}</h2>
+                </Paper>
+                <Paper variant="outlined" elevation={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height:'350px', width: '300px', backgroundColor: '#69DC9E', margin: '0px 10px 20px 10px'}}>
+                    <h2>Most Attempted Trick</h2>
+                    <h2>{highestAttemptedTrick()}</h2>
+                </Paper>
+                <Paper variant="outlined" elevation={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height:'350px', width: '300px', backgroundColor: '#69DC9E', margin: '0px 10px 20px 10px'}}>
+                    <h2>Least Attempted Trick</h2>
+                    <h2>{leastAttemptedTrick()}</h2>
+                </Paper>
+                <Paper variant="outlined" elevation={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height:'350px', width: '300px', backgroundColor: '#69DC9E', margin: '0px 10px 20px 10px'}}>
+                    <h2>Average Difficulty</h2>
+                    <h2>{averageDifficulty()}</h2>
+                </Paper>
             </div>
-            <div>
-                <h3>Most Attempted Trick</h3>
-                <h4>{highestAttemptedTrick()}</h4>
-            </div>
-            <div>
-                <h3>Least Attempted Trick</h3>
-                <h4>{leastAttemptedTrick()}</h4>
-            </div>
-            <div>
-                <h3>Average Difficulty</h3>
-                <h4>{averageDifficulty()}</h4>
-            </div>
-                <button onClick={averageDifficulty}>Log Function</button>
         </div>
     )
 }

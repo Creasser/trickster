@@ -7,7 +7,7 @@ function Home(){
     const { user } = useContext(UserContext)
 
     return(
-        <div style={{backgroundColor: '#8BAAAD', height:'100vh'}}>
+        <div style={{backgroundColor: '#8BAAAD', height:'100%'}}>
             <h1 style={{paddingLeft: '50px', marginTop:'0px', paddingTop: '20px'}}>{`Welcome, ${user.username}`}</h1>
             <div>
                 <GoalList />

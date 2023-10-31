@@ -1,5 +1,5 @@
 class Trick < ApplicationRecord
-    has_many :goals, dependent: :destroy
+    has_many :goals, dependent: :delete_all
     has_many :users, through: :goals
     belongs_to :category
     validates :title, uniqueness: true 

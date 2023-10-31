@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { TrickContext } from "./Context";
+import { TrickContext, UserContext } from "./Context";
 import { Button, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 
 function TrickForm(){
@@ -9,6 +9,7 @@ function TrickForm(){
         difficulty: ''
     })
 
+    const { user } = useContext(UserContext)
     const { tricks, setTricks } = useContext(TrickContext)
 
     function handleNewTrick(trick){
@@ -53,7 +54,8 @@ function TrickForm(){
             body: JSON.stringify({
                 title: newTrick.title,
                 category_id: cat,
-                difficulty: parseInt(newTrick.difficulty)
+                difficulty: parseInt(newTrick.difficulty),
+                creator_id: parseInt(user.id)
             })
         }).then((r) => {
             if(r.ok){

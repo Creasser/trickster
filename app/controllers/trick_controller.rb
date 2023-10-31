@@ -17,15 +17,19 @@ class TrickController < ApplicationController
 
     def destroy
         trick = @current_user.tricks.find_by(id: params[:id])
-        trick.destroy
-        head :no_content
+        if trick.creator_id == @current_user.id
+            trick.destroy
+            head :no_content
+        else
+           render json: {errors: 'You can not do this'}, status: :unprocessable_entity
+        end
     end
 
 
     private
 
     def trick_params 
-        params.permit(:category_id, :title, :difficulty)
+        params.permit(:category_id, :title, :difficulty, :creator_id)
     end
 
 end

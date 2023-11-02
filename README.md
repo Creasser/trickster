@@ -1,13 +1,6 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 # TriXster
 
-**TriXster** is an application that allows snowboarders to easily manage current tricks that they are working on.
+**TriXster** is an application that allows snowboarders to easily manage current tricks that they are working on. This application uses a React frontend and a Rails backend.
 
 # Database Structure
 - Includes a many to many database relationship
@@ -18,8 +11,13 @@ Things you may want to cover:
 
 # User Experience
 **Users are able to:**
+- create an account and login
 - add currently existing tricks to their own goals
 - increase the current number of attempts on a trick
+- update the status of a trick to completed
+- add tricks that are not currently added to the application
+- remove tricks that they made in error
+- manage their stats
 
 # Versions
 ### Backend
@@ -32,22 +30,3 @@ Things you may want to cover:
 - React 18.2
 - React Router Dom 5.3.4
 - MaterialUI 5.14.13
-
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "./Context";
 import { Paper, Button } from "@mui/material";
 
-function Goal({ goal, attempts, is_completed, id, handleAttempt }){
+function Goal({ goal, attempts, is_completed, id, handleAttempt, onDelete }){
 
     if (!goal){
         return <h1></h1>
@@ -65,6 +65,18 @@ function Goal({ goal, attempts, is_completed, id, handleAttempt }){
         })
     }
 
+    function handleDelete(e){
+        e.preventDefault(e)
+        console.log('workking')
+        fetch(`/goal/${id}`, {
+            method: 'DELETE'
+        }).then((r) => {
+            if (r.ok){
+                onDelete(id)
+            }
+        })
+    }
+
     // function handleAttempt(updatedGoal){
     //     const currentUser = user
     //     const currentGoal = user.goals.find((goal) => goal.id === updatedGoal.id)
@@ -80,13 +92,14 @@ function Goal({ goal, attempts, is_completed, id, handleAttempt }){
     let color = is_completed ? '#69DC9E' : '#90323D'
 
     return (
-        <Paper variant="outlined" elevation={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height:'400px', width: '300px', backgroundColor: color, margin: '0px 10px 20px 10px'}}>
+        <Paper variant="outlined" elevation={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', height:'430px', width: '300px', backgroundColor: color, margin: '0px 10px 20px 10px'}}>
             <h1>{goal.title}</h1>
             <h3>{`Difficulty: ${goal.difficulty}/5`}</h3>
             <h3>{`Attempts: ${attempts}`}</h3>
             <h3>{is_completed ? 'Completed' : 'In Progress'}</h3>
             <Button variant="contained" disabled={is_completed ? true : false} onClick={handleAddAttempt} style={{marginBottom: '10px', color: 'black', backgroundColor: '#8BAAAD'}}>Add Attempt</Button>
-            <Button variant="contained" onClick={handleCompleted} style={{color: 'black', backgroundColor: '#8BAAAD'}}>Mark Completed</Button>
+            <Button variant="contained" onClick={handleCompleted} style={{color: 'black', backgroundColor: '#8BAAAD', marginBottom: '10px'}}>Mark Completed</Button>
+            <Button variant="contained" style={{color: 'black', backgroundColor: '#8BAAAD'}} onClick={handleDelete}>Delete</Button>
         </Paper>
     )
 }

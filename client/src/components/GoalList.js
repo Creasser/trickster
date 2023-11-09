@@ -19,9 +19,16 @@ function GoalList(){
         currentUser.goals = updatedGoals
         setUser(currentUser)
     }
+
+    function onDelete(id){
+        const currentUser = {...user}
+        const updatedUserGoals = user.goals.filter((goal) => goal.id !== id)
+        currentUser.goals = updatedUserGoals
+        setUser(currentUser)
+    }
  
     const goalsToDisplay = user.goals.map((goal) => {
-        return <Goal goal={goal.trick} attempts={goal.attempts} is_completed={goal['is_completed']} id={goal.id} handleAttempt={handleAttempt} key={uuidv4()}/>
+        return <Goal goal={goal.trick} attempts={goal.attempts} is_completed={goal['is_completed']} id={goal.id} handleAttempt={handleAttempt} onDelete={onDelete} key={uuidv4()}/>
     })
 
     function handleClick(){

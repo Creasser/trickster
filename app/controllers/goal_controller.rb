@@ -15,6 +15,12 @@ class GoalController < ApplicationController
         end
     end
 
+    def destroy
+        goal = @current_user.goals.find(params[:id])
+        goal.destroy
+        head :no_content
+    end
+
     #need to pass the trick_id to the server, and just use goal_params
     #need to set up serializer for relationships
     private

@@ -63,6 +63,9 @@ function App() {
           <Route path='/stats'>
             <Stats />
           </Route>
+          <Route path='/weather'>
+            <Stats />
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>

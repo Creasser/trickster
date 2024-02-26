@@ -38,8 +38,11 @@ function Navbar(){
                 <Typography variant="h6" color="inherit" paddingLeft='20px' >
                     <Link to='/trick' style={{textDecoration: 'none', color: 'white'}}>Trick</Link>
                 </Typography>
-                <Typography variant="h6" color="inherit" paddingLeft='20px' sx={{flexGrow: 1}} >
+                <Typography variant="h6" color="inherit" paddingLeft='20px' >
                     <Link to='/stats' style={{textDecoration: 'none', color: 'white'}}>My Stats</Link>
+                </Typography>
+                <Typography variant="h6" color="inherit" paddingLeft='20px' sx={{flexGrow: 1}} >
+                    <Link to='/' style={{textDecoration: 'none', color: 'white'}}>Weather</Link>
                 </Typography>
                 <Button onClick={handleLogout} color="inherit" >Logout</Button>
             </Toolbar>
